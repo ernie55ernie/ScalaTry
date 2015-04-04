@@ -4,6 +4,7 @@
 package basic
 
 import scala.collection.mutable.MutableList;
+import scala.collection.mutable.Set;
 
 /**
  * @author ernie
@@ -17,6 +18,7 @@ object BasicSyntax {
     val e = new Enumerate()
     e.enumerate("car", 2)
     println
+    println(e)
     "car".permutations.foreach { x => print(x);print(" ") }
   }
   
@@ -46,7 +48,7 @@ class Enumerate(){
     if(level == n){
       list.foreach { x => print(x) }
       print(" ")
-      set.+(list.toString())
+      set.add(list.toString())
       return
     }
     for(i <- current to (in.size - 1)){
@@ -55,5 +57,7 @@ class Enumerate(){
       list = list.init
     }
   }
+  
+  override def toString(): String = set.toString()
 }
 
