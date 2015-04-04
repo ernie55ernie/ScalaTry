@@ -13,13 +13,19 @@ import scala.collection.mutable.Set;
 object BasicSyntax {
   def main(args: Array[String]){
     println("Hello Scala!")
-    VarAndVal()
+    VarAndVal
     
     val e = new Enumerate()
     e.enumerate("car", 2)
     println
     println(e)
     "car".permutations.foreach { x => print(x);print(" ") }
+    println
+    
+    Option
+    
+    val b = new BasicSyntax("public", "secret")
+    println(BasicSyntax.getPrivateWord(b))
   }
   
   def VarAndVal(){
@@ -32,7 +38,24 @@ object BasicSyntax {
     assert(age == 20)
   }
   
+  def Option(){
+    val someString:Option[String] = Some("There is a string")
+    println(someString match {
+      case Some(s) => s
+      case None => "None"
+    })
+    
+    val noneString:Option[String] = None
+    println(noneString match {
+      case Some(s) => s
+      case None => "None"
+    })
+  }
+  
+  def getPrivateWord(b: BasicSyntax) = b.privateWord
 }
+
+class BasicSyntax(val publicWord: String, private val privateWord: String)
 
 class Enumerate(){
   
