@@ -26,6 +26,8 @@ object BasicSyntax {
     
     val b = new BasicSyntax("public", "secret")
     println(BasicSyntax.getPrivateWord(b))
+    
+    Tuples
   }
   
   def VarAndVal(){
@@ -50,6 +52,15 @@ object BasicSyntax {
       case Some(s) => s
       case None => "None"
     })
+  }
+  
+  def Tuples(){
+    val tuple_3 = ("1", "2", "3")
+    val tuple_5 = (tuple_3._1, tuple_3._2, tuple_3._3, "4", "5")
+    val tuple_7 = (tuple_3._1, tuple_3._2, tuple_3._3, tuple_5._4, tuple_5._5);
+    print(tuple_7)
+    print(tuple_5)
+    print(tuple_7)
   }
   
   def getPrivateWord(b: BasicSyntax) = b.privateWord
