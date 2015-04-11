@@ -29,7 +29,9 @@ object BasicSyntax {
     
     Tuples
     
-    lambda
+    Lambda
+    
+    ListUsage
   }
   
   def VarAndVal(){
@@ -65,7 +67,7 @@ object BasicSyntax {
     println(tuple_7)
   }
   
-  def lambda(){
+  def Lambda(){
     val newFunction = new Function[Int, Int]{
       def apply(x: Int): Int = x + 5
     }
@@ -102,6 +104,21 @@ object BasicSyntax {
     println(List(1, 2, 3, 4, 5))
     println("customFilter: " + customFilter(onlyOdd)(List(1, 2, 3, 4, 5)))
     println("onlyOddFilter: " + onlyOddFilter(List(1, 2, 3, 4, 5)))
+  }
+  
+  def ListUsage(){
+    val l1 = (1 to 5).toList
+    val l2 = List(1, 2, 3, 4, 5)
+    
+    println("l1 eq l2: " + (l1 eq l2))
+    println("l1 == l2: " + (l1 == l2))
+    println("init: " + l1.init + ", last: " + l1.last )
+    println("head: " + l1.head + ", tail: " + l1.tail )
+    println(l1.filterNot { x => x % 2 == 0 })
+    println(l1 map (_ * 2))
+    println(l1 filter (_ % 2 == 0))
+    println(l1.reduceLeft(_ + _))
+    println(l1.foldLeft(10)(_ + _))
   }
   
   def getPrivateWord(b: BasicSyntax) = b.privateWord
