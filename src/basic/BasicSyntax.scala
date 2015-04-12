@@ -35,6 +35,8 @@ object BasicSyntax {
     ListUsage
   
     MapUsage
+    
+    SetUsage
   }
   
   def VarAndVal(){
@@ -135,6 +137,21 @@ object BasicSyntax {
     println("Head of map: " + mapValues.head)
     println("Size of map: " + map.size)
     println("Tuple in map: " + map("Tuple"))
+    
+  }
+  
+  def SetUsage(){
+    val set = Set("Java", "C++", "C", "Python")
+    val addSet = set + "Scala"
+    val subSet = set - "Python"
+    val interSet = set intersect addSet
+    val union = set union interSet
+    val diffSet = set diff subSet
+    
+    println(set)
+    println(addSet)
+    println(subSet)
+    println("Subset of: " + (subSet subsetOf addSet))
     
   }
   
