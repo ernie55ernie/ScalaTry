@@ -5,6 +5,7 @@ package basic
 
 import scala.collection.mutable.MutableList;
 import scala.collection.mutable.Set;
+import scala.collection.mutable.Map;
 
 /**
  * @author ernie
@@ -32,6 +33,8 @@ object BasicSyntax {
     Lambda
     
     ListUsage
+  
+    MapUsage
   }
   
   def VarAndVal(){
@@ -119,6 +122,20 @@ object BasicSyntax {
     println(l1 filter (_ % 2 == 0))
     println(l1.reduceLeft(_ + _))
     println(l1.foldLeft(10)(_ + _))
+  }
+  
+  
+  def MapUsage(){
+    val map = Map[String, Any]("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "MI" -> "Michigan")
+    val mapValues = map.values
+    map("Tuple") = (123, 456, 789)
+    val substractMap = map -- List("MI")
+    
+    
+    println("Head of map: " + mapValues.head)
+    println("Size of map: " + map.size)
+    println("Tuple in map: " + map("Tuple"))
+    
   }
   
   def getPrivateWord(b: BasicSyntax) = b.privateWord
