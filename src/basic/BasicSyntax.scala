@@ -37,6 +37,8 @@ object BasicSyntax {
     MapUsage
     
     SetUsage
+    
+    formatUsage
   }
   
   def VarAndVal(){
@@ -153,6 +155,18 @@ object BasicSyntax {
     println(subSet)
     println("Subset of: " + (subSet subsetOf addSet))
     
+  }
+  
+  def formatUsage(){
+    val greeting = "Hello"
+    val char = 'H'
+    val number = 180
+    val cake = "cake"
+    
+    println("Application %s".format(greeting))
+    println("%cello application".format(char))
+    println("%d beverages are provided" format number - 100)
+    println("%d %s are provided" format(number - 80, cake))
   }
   
   def getPrivateWord(b: BasicSyntax) = b.privateWord
