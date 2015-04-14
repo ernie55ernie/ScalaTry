@@ -39,6 +39,8 @@ object BasicSyntax {
     SetUsage
     
     formatUsage
+  
+    patternMatching
   }
   
   def VarAndVal(){
@@ -167,6 +169,17 @@ object BasicSyntax {
     println("%cello application".format(char))
     println("%d beverages are provided" format number - 100)
     println("%d %s are provided" format(number - 80, cake))
+  }
+  
+  def patternMatching(){
+    val stuff = "blue"
+    
+    val myStuff = stuff match {
+      case "red" => println("RED"); 1
+      case "blue" => println("BLUE"); 2
+      case "green" => println("GREEN"); 3
+      case _ => println(stuff); 0 //case _ will trigger if all other cases fail.
+    }
   }
   
   def getPrivateWord(b: BasicSyntax) = b.privateWord
