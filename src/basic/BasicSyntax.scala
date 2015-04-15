@@ -172,14 +172,56 @@ object BasicSyntax {
   }
   
   def patternMatching(){
-    val stuff = "blue"
-    
-    val myStuff = stuff match {
-      case "red" => println("RED"); 1
-      case "blue" => println("BLUE"); 2
-      case "green" => println("GREEN"); 3
-      case _ => println(stuff); 0 //case _ will trigger if all other cases fail.
+    def intMatch(x: Int): String = x match{
+      case 1 => "one"
+      case 2 => "two"
+      case 3 => "three"
+      case _ => "many"
     }
+    
+    def colorMatch(x: String): Any = x match{
+      case "blue" => (0, 0, 255)
+      case "green" => (0, 255, 0)
+      case "red" => (255, 0, 0)
+      case _ => print(x); 0
+    }
+    
+    def multiMatch(x: Any) = x match {
+      case ("yesterday", "dinner") => "Good night" 
+      case ("today", "lunch") => "It's noon"
+      case ("tomorrow", "breakfast") => "Good morning"
+      case _ => "what?"
+    }
+    
+    def substituteMatch(x: Any) = x match{
+      case ("dinner", people) => people + " is eating dinner"
+      case ("lunch", people) => people + " is eating lunch"
+      case ("breakfast", people) => people + " is eating breakfast"
+      case _ => "Who is doing what?"
+    }
+    
+    val DinnerRegularExpression = """Dinner time: people=([^,]+),\s+food=(.+)""".r
+    val LunchRegularExpression = """Lunch time: people=([^,]+),\s+food=(.+)""".r
+    val BreakfastRegularExpression = """Breakfast time: people=([^,]+),\s+food=(.+)""".r
+    def mealRegularExpression(rex: String) = rex match{
+      case (DinnerRegularExpression(people, food)) => "%s is eating %s".format(people, food)
+      case (LunchRegularExpression(people, food)) => "%s is eating %s".format(people, food)
+      case (BreakfastRegularExpression(people, food)) => "%s is eating %s".format(people, food)
+      case _ => "what?"
+    }
+    
+    val element = List(1, 2, 3, 4, 5) match{
+      case x::y::Nil=> x
+      case x::xs => xs.head
+      case _ => 0
+    }
+    
+    println(intMatch(2))
+    println(colorMatch("blue"))
+    println(multiMatch(("yesterday", "dinner")))
+    println(substituteMatch(("lunch", "Ernie")))
+    println(mealRegularExpression("Breakfast time: people=Ernie, food=guava"))
+    println(element)
   }
   
   def getPrivateWord(b: BasicSyntax) = b.privateWord
