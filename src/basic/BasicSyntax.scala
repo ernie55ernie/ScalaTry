@@ -41,6 +41,8 @@ object BasicSyntax {
     formatUsage
   
     patternMatching
+    
+    caseClass
   }
   
   def VarAndVal(){
@@ -222,6 +224,52 @@ object BasicSyntax {
     println(substituteMatch(("lunch", "Ernie")))
     println(mealRegularExpression("Breakfast time: people=Ernie, food=guava"))
     println(element)
+  }
+  
+  def caseClass(){
+    abstract class Exp
+    case class And(exp1: Exp, exp2: Exp) extends Exp
+    case class Or(exp1: Exp, exp2: Exp) extends Exp 
+    case class Not(exp: Exp) extends Exp
+    case class Val(value: Boolean) extends Exp
+    
+    def printExp(exp: Exp){
+      exp match{
+        case Val(v) =>
+          print(v)
+        case Or(x, y) =>
+          print("(")
+          printExp(x)
+          print("||")
+          printExp(y)
+          print(")")
+        case And(x, y) =>
+          print("(")
+          printExp(x)
+          print("&&")
+          printExp(y)
+          print(")")
+        case Not(x) =>
+          print("(~")
+          printExp(x)
+          print(")")
+       }
+    }
+    
+    val texp = Val(true)
+    val atexp = Val(true)
+    val exp = And(Val(true), Or(Not(Val(false)), Val(false)))
+    val expc = exp.copy(exp1 = Not(Val(false)))
+    val parts = And.unapply(exp).get
+    
+    printExp(exp)
+    println
+    println(exp.toString)
+    printExp(expc)
+    println
+    println(parts)
+    println("texp == atexp: " + (texp == atexp))
+    println("Serializable: " + exp.isInstanceOf[Serializable])
   }
   
   def getPrivateWord(b: BasicSyntax) = b.privateWord
