@@ -45,6 +45,8 @@ object BasicSyntax {
     caseClass
     
     rangeUsage
+    
+    partialFunction
   }
   
   def VarAndVal(){
@@ -280,6 +282,32 @@ object BasicSyntax {
     
     println(rangeList)
     println(rangeInclusiveList)
+  }
+
+  def partialFunction(){
+    def sum(a: Int, b: Int) = a + b 
+    def sum5 = sum(5, _: Int)
+    val quatorEven: PartialFunction[Int, Int] = new PartialFunction[Int, Int](){
+      def isDefinedAt(x: Int) = x % 2 == 0
+      
+      def apply(y: Int) = y * 4
+    }
+    val quintupleOdd: PartialFunction[Int, Int] = new PartialFunction[Int, Int](){
+      def isDefinedAt(x: Int) = x % 2 != 0
+      
+      def apply(y: Int) = y * 5
+    }
+    val print: PartialFunction[Int, String] = {
+      case x: Int if(x % 2 != 0) => "Odd"
+      case x: Int if(x % 2 == 0) => "Even"
+    }
+    val addFive = (x: Int) => x + 5
+    val orElseAndThen = quatorEven orElse quintupleOdd andThen addFive
+    val orElseAndThenPrint = quatorEven orElse quintupleOdd andThen print
+    
+    println(sum5(5))
+    println(orElseAndThen(6))
+    println(orElseAndThenPrint(6))
   }
   
   def getPrivateWord(b: BasicSyntax) = b.privateWord
