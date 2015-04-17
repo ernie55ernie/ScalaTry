@@ -43,6 +43,8 @@ object BasicSyntax {
     patternMatching
     
     caseClass
+    
+    rangeUsage
   }
   
   def VarAndVal(){
@@ -270,6 +272,14 @@ object BasicSyntax {
     println(parts)
     println("texp == atexp: " + (texp == atexp))
     println("Serializable: " + exp.isInstanceOf[Serializable])
+  }
+  
+  def rangeUsage(){
+    val rangeList = Range(2, 11, 3);
+    val rangeInclusiveList = Range(2, 11, 3).inclusive;
+    
+    println(rangeList)
+    println(rangeInclusiveList)
   }
   
   def getPrivateWord(b: BasicSyntax) = b.privateWord
