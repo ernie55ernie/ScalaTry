@@ -1,7 +1,7 @@
 /**
  * 
  */
-package objecttrain
+package objecttrait
 
 /**
  * @author ernie
