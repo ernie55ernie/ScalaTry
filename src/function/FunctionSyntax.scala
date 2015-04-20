@@ -37,10 +37,32 @@ object FunctionSyntax {
     import IntPredef._
     println(19.isOdd)
     println(20.isEven)
+    
+    infixPrefixPostfixUsage
+  }
+
+  def infixPrefixPostfixUsage(){
+    val integer: Int = 51
+    val string: String = "Hello world!"
+    val light = new Light
+    
+    println(integer.+(5))
+    println(string indexOf 'o')
+    println(string.indexOf('o'))
+    println(string.indexOf('o', string.indexOf('o') + 1))
+    println(integer toHexString)
+    println(-light)
+    println(+light)
   }
 }
 
 abstract class AddGroup[T]{
   def add(x: T, y: T): T
   def unit: T
+}
+
+class Light{
+  def unary_+ = "open"
+  
+  def unary_- = "close"
 }
