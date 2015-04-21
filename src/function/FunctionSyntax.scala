@@ -39,6 +39,7 @@ object FunctionSyntax {
     println(20.isEven)
     
     infixPrefixPostfixUsage
+    
   }
 
   def infixPrefixPostfixUsage(){
@@ -53,6 +54,21 @@ object FunctionSyntax {
     println(integer toHexString)
     println(-light)
     println(+light)
+    
+    val ernie = new Person("Ernie")
+    val jennifer = new Person("Jennifer")
+    println(announceCouple(ernie love jennifer))
+  }
+
+
+  case class Person(name: String){
+    def love(person: Person) = new Loves(this, person)
+  }
+  
+  class Loves[A, B](val a: A, val b: B)
+  
+  def announceCouple(couple: Person Loves Person) = {
+    couple.a.name + " is in love with " + couple.b.name
   }
 }
 
