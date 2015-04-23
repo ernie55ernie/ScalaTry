@@ -4,6 +4,7 @@
 package collection
 
 import scala.collection.mutable.Map;
+import scala.collection.mutable.Set;
 
 /**
  * @author ernie
@@ -12,10 +13,12 @@ import scala.collection.mutable.Map;
 object CollectionSyntax {
   
   def main(args: Array[String]){
-    mutableUsage
+    mutableMapUsage
+    
+    mutableSetUsage
   }
   
-  def mutableUsage(){
+  def mutableMapUsage(){
     val mutableMap = Map(1 -> "One", 2 -> "Two", 3 -> "Three", 4 -> "Four", 5 -> "Five")
     println(mutableMap)
     mutableMap -= 1
@@ -27,6 +30,21 @@ object CollectionSyntax {
     println(mutableMap)
     mutableMap.clear()
     println(mutableMap.size)
+  }
+  
+  def mutableSetUsage(){
+    val mutableSet = Set(1, 2, 3, 4, 5)
+    println(mutableSet)
+    mutableSet -= 1
+    mutableSet --= List(2, 3)
+    mutableSet -= (4, 5)
+    println(mutableSet)
+    mutableSet += 1
+    mutableSet += (2, 3)
+    mutableSet ++= List(4, 5)
+    println(mutableSet)
+    mutableSet.clear
+    println(mutableSet)
   }
 
 }
