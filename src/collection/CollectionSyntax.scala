@@ -16,6 +16,8 @@ object CollectionSyntax {
     mutableMapUsage
     
     mutableSetUsage
+    
+    seqAndArray
   }
   
   def mutableMapUsage(){
@@ -45,6 +47,22 @@ object CollectionSyntax {
     println(mutableSet)
     mutableSet.clear
     println(mutableSet)
+  }
+  
+  def seqAndArray(){
+    val list = List("1", "2", "3")
+    val array = list.toArray
+    val seq = array.toSeq
+    val seqFor = for(i <- 1 to 5) yield i
+    val seqString = Seq("one", "two", "three", "four", "five") 
+    println(list)
+    println(array)
+    println(seq)
+    println(seqFor)
+    println(seqString.filter(_.length > 3))
+    println(seqString.map{
+      _.reverse
+    })
   }
 
 }
